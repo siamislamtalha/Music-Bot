@@ -1,25 +1,12 @@
 {
-  "name": "workspace",
+  "name": "LyraBot",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@discordjs/voice": "^0.18.0",
-    "axios": "^1.9.0",
-    "discord.js": "^14.19.3",
-    "kazagumo": "^3.2.2",
-    "node-cron": "^4.0.7",
-    "play-dl": "^1.9.7",
-    "shoukaku": "^4.1.1",
-    "spotify-web-api-node": "^5.0.2",
-    "sqlite3": "^5.1.7",
-    "youtube-search-api": "^1.2.2",
-    "ytdl-core": "^4.11.5"
-  },
-  "description": ""
+    "discord.js": "^14.0.0",
+    "dotenv": "^16.0.0"
+  }
 }
