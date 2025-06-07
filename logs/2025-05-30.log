@@ -1,0 +1,1150 @@
+[2025-05-30T16:14:55.702Z] [INFO] Connected to SQLite database
+[2025-05-30T16:14:55.709Z] [INFO] Database tables created successfully
+[2025-05-30T16:14:55.710Z] [INFO] Database initialized successfully
+[2025-05-30T16:14:55.716Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T16:14:55.718Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T16:14:55.721Z] [INFO] Loaded command: addrole
+[2025-05-30T16:14:55.723Z] [INFO] Loaded command: removerole
+[2025-05-30T16:14:55.724Z] [INFO] Loaded command: resetlimits
+[2025-05-30T16:14:55.725Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T16:14:55.725Z] [INFO] Loaded command: viewroles
+[2025-05-30T16:14:55.727Z] [INFO] Loaded command: 247mode
+[2025-05-30T16:14:55.815Z] [INFO] Loaded command: clear
+[2025-05-30T16:14:55.816Z] [INFO] Loaded command: loop
+[2025-05-30T16:14:55.817Z] [INFO] Loaded command: nowplaying
+[2025-05-30T16:14:55.818Z] [INFO] Loaded command: pause
+[2025-05-30T16:14:55.819Z] [INFO] Loaded command: play
+[2025-05-30T16:14:55.820Z] [INFO] Loaded command: queue
+[2025-05-30T16:14:55.822Z] [INFO] Loaded command: radio
+[2025-05-30T16:14:55.823Z] [INFO] Loaded command: resume
+[2025-05-30T16:14:55.823Z] [INFO] Loaded command: shuffle
+[2025-05-30T16:14:55.824Z] [INFO] Loaded command: skip
+[2025-05-30T16:14:55.825Z] [INFO] Loaded command: stop
+[2025-05-30T16:14:55.826Z] [INFO] Loaded command: volume
+[2025-05-30T16:14:55.827Z] [INFO] Loaded command: help
+[2025-05-30T16:14:55.827Z] [INFO] Loaded command: join
+[2025-05-30T16:14:55.828Z] [INFO] Loaded command: leave
+[2025-05-30T16:14:55.828Z] [INFO] Loaded 23 commands
+[2025-05-30T16:14:55.829Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T16:14:55.830Z] [INFO] Loaded event: ready
+[2025-05-30T16:14:55.830Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T16:14:55.830Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T16:14:55.869Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T16:14:55.870Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T16:14:56.014Z] [ERROR] Error registering commands: {
+  "requestBody": {
+    "json": [
+      {
+        "options": [
+          {
+            "type": 3,
+            "name": "server_id",
+            "description": "Server ID (leave empty for current server)",
+            "required": false
+          },
+          {
+            "max_value": 365,
+            "min_value": 1,
+            "type": 4,
+            "name": "days",
+            "description": "Duration in days",
+            "required": true
+          }
+        ],
+        "name": "addpremiumserver",
+        "description": "Grant premium access to a server",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "name": "user",
+            "description": "User to grant premium access",
+            "required": true,
+            "type": 6
+          },
+          {
+            "max_value": 365,
+            "min_value": 1,
+            "type": 4,
+            "name": "days",
+            "description": "Duration in days",
+            "required": true
+          }
+        ],
+        "name": "addpremiumuser",
+        "description": "Add premium role to a user with time limit",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "name": "user",
+            "description": "User to assign role to",
+            "required": true,
+            "type": 6
+          },
+          {
+            "type": 3,
+            "choices": [
+              {
+                "name": "🎖️ Super Admin",
+                "value": "superadmin"
+              },
+              {
+                "name": "🛡️ Admin",
+                "value": "admin"
+              },
+              {
+                "name": "🛠️ Moderator",
+                "value": "moderator"
+              },
+              {
+                "name": "💎 Premium",
+                "value": "premium"
+              }
+            ],
+            "name": "role",
+            "description": "Role to assign",
+            "required": true
+          },
+          {
+            "max_value": 365,
+            "min_value": 1,
+            "type": 4,
+            "name": "days",
+            "description": "Duration in days (only for premium role)",
+            "required": false
+          }
+        ],
+        "name": "addrole",
+        "description": "Assign a role to a user (Super Admin only)",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "name": "user",
+            "description": "User to remove role from",
+            "required": true,
+            "type": 6
+          }
+        ],
+        "name": "removerole",
+        "description": "Remove a role from a user (Super Admin only)",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "name": "user",
+            "description": "User to reset limits for",
+            "required": true,
+            "type": 6
+          }
+        ],
+        "name": "resetlimits",
+        "description": "Reset daily usage limits for a user",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "type": 3,
+            "name": "url",
+            "description": "The URL for the contact admin button",
+            "required": true
+          }
+        ],
+        "name": "setcontactlink",
+        "description": "Set the contact admin button URL (Super Admin only)",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "type": 3,
+            "choices": [
+              {
+                "name": "🎖️ Super Admin",
+                "value": "superadmin"
+              },
+              {
+                "name": "🛡️ Admin",
+                "value": "admin"
+              },
+              {
+                "name": "🛠️ Moderator",
+                "value": "moderator"
+              },
+              {
+                "name": "💎 Premium",
+                "value": "premium"
+              },
+              {
+                "name": "👤 Normal",
+                "value": "normal"
+              }
+            ],
+            "name": "role",
+            "description": "Role to view",
+            "required": true
+          }
+        ],
+        "name": "viewroles",
+        "description": "View users by role",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "name": "enabled",
+            "description": "Enable or disable 24/7 mode",
+            "required": false,
+            "type": 5
+          }
+        ],
+        "name": "247mode",
+        "description": "Toggle 24/7 mode - bot stays in voice channel permanently",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "clear",
+        "description": "Clear the music queue",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "type": 3,
+            "choices": [
+              {
+                "name": "Off",
+                "value": "none"
+              },
+              {
+                "name": "Current Song",
+                "value": "song"
+              },
+              {
+                "name": "Queue",
+                "value": "queue"
+              }
+            ],
+            "name": "mode",
+            "description": "Loop mode",
+            "required": false
+          }
+        ],
+        "name": "loop",
+        "description": "Set loop mode for music playback",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "nowplaying",
+        "description": "Show information about the currently playing song",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "pause",
+        "description": "Pause the currently playing song",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "type": 3,
+            "name": "query",
+            "description": "Song name, artist, or URL",
+            "required": true
+          },
+          {
+            "type": 3,
+            "choices": [
+              {
+                "name": "Auto",
+                "value": "auto"
+              },
+              {
+                "name": "YouTube",
+                "value": "youtube"
+              },
+              {
+                "name": "Spotify",
+                "value": "spotify"
+              },
+              {
+                "name": "SoundCloud",
+                "value": "soundcloud"
+              }
+            ],
+            "name": "platform",
+            "description": "Platform to search on",
+            "required": false
+          }
+        ],
+        "name": "play",
+        "description": "Play a song from YouTube, Spotify, or SoundCloud",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "min_value": 1,
+            "type": 4,
+            "name": "page",
+            "description": "Page number",
+            "required": false
+          }
+        ],
+        "name": "queue",
+        "description": "Show the current music queue",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "type": 3,
+            "choices": [
+              {
+                "name": "Pop",
+                "value": "pop"
+              },
+              {
+                "name": "Rock",
+                "value": "rock"
+              },
+              {
+                "name": "Jazz",
+                "value": "jazz"
+              },
+              {
+                "name": "Classical",
+                "value": "classical"
+              },
+              {
+                "name": "Electronic",
+                "value": "electronic"
+              },
+              {
+                "name": "Chill",
+                "value": "chill"
+              },
+              {
+                "name": "Lo-Fi",
+                "value": "lofi"
+              }
+            ],
+            "name": "genre",
+            "description": "Radio genre",
+            "required": false
+          }
+        ],
+        "name": "radio",
+        "description": "Start continuous radio streaming",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "resume",
+        "description": "Resume the paused song",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "shuffle",
+        "description": "Shuffle the current music queue",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "skip",
+        "description": "Skip the currently playing song",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "stop",
+        "description": "Stop the music and clear the queue",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "max_value": 100,
+            "min_value": 1,
+            "type": 4,
+            "name": "level",
+            "description": "Volume level (1-100)",
+            "required": true
+          }
+        ],
+        "name": "volume",
+        "description": "Set the music volume",
+        "type": 1
+      },
+      {
+        "options": [
+          {
+            "type": 3,
+            "choices": [
+              {
+                "name": "🎵 Music Commands",
+                "value": "music"
+              },
+              {
+                "name": "🛡️ Admin Commands",
+                "value": "admin"
+              },
+              {
+                "name": "🔧 Utility Commands",
+                "value": "utility"
+              },
+              {
+                "name": "💎 Premium Features",
+                "value": "premium"
+              }
+            ],
+            "name": "category",
+            "description": "Show commands for specific category",
+            "required": false
+          }
+        ],
+        "name": "help",
+        "description": "Show available commands and bot information",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "join",
+        "description": "Invite the bot to your voice channel",
+        "type": 1
+      },
+      {
+        "options": [],
+        "name": "leave",
+        "description": "Remove the bot from the voice channel",
+        "type": 1
+      }
+    ]
+  },
+  "rawError": {
+    "message": "401: Unauthorized",
+    "code": 0
+  },
+  "code": 0,
+  "status": 401,
+  "method": "PUT",
+  "url": "https://discord.com/api/v10/applications/your_client_id_here/commands"
+}
+[2025-05-30T16:14:56.167Z] [ERROR] Failed to initialize bot: {
+  "code": "TokenInvalid"
+}
+[2025-05-30T16:43:56.151Z] [INFO] Connected to SQLite database
+[2025-05-30T16:43:56.157Z] [INFO] Database tables created successfully
+[2025-05-30T16:43:56.157Z] [INFO] Database initialized successfully
+[2025-05-30T16:43:56.162Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T16:43:56.171Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T16:43:56.184Z] [INFO] Loaded command: addrole
+[2025-05-30T16:43:56.185Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T16:43:56.186Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T16:43:56.187Z] [INFO] Loaded command: removerole
+[2025-05-30T16:43:56.189Z] [INFO] Loaded command: resetlimits
+[2025-05-30T16:43:56.191Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T16:43:56.192Z] [INFO] Loaded command: viewroles
+[2025-05-30T16:43:56.194Z] [INFO] Loaded command: 247mode
+[2025-05-30T16:43:56.496Z] [INFO] Loaded command: clear
+[2025-05-30T16:43:56.498Z] [INFO] Loaded command: loop
+[2025-05-30T16:43:56.500Z] [INFO] Loaded command: nowplaying
+[2025-05-30T16:43:56.501Z] [INFO] Loaded command: pause
+[2025-05-30T16:43:56.503Z] [INFO] Loaded command: play
+[2025-05-30T16:43:56.504Z] [INFO] Loaded command: playytlive
+[2025-05-30T16:43:56.504Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T16:43:56.506Z] [INFO] Loaded command: queue
+[2025-05-30T16:43:56.508Z] [INFO] Loaded command: radio
+[2025-05-30T16:43:56.510Z] [INFO] Loaded command: resume
+[2025-05-30T16:43:56.510Z] [INFO] Loaded command: shuffle
+[2025-05-30T16:43:56.512Z] [INFO] Loaded command: skip
+[2025-05-30T16:43:56.513Z] [INFO] Loaded command: stop
+[2025-05-30T16:43:56.514Z] [INFO] Loaded command: volume
+[2025-05-30T16:43:56.516Z] [INFO] Loaded command: help
+[2025-05-30T16:43:56.517Z] [INFO] Loaded command: join
+[2025-05-30T16:43:56.519Z] [INFO] Loaded command: leave
+[2025-05-30T16:43:56.519Z] [INFO] Loaded 27 commands
+[2025-05-30T16:43:56.521Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T16:43:56.521Z] [INFO] Loaded event: ready
+[2025-05-30T16:43:56.523Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T16:43:56.523Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T16:43:56.561Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T16:43:56.563Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T16:43:57.412Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T16:43:57.952Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#0054
+[2025-05-30T16:43:57.952Z] [INFO] 📊 Serving 0 servers with 1 users
+[2025-05-30T16:43:58.125Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T16:43:58.126Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T16:43:59.635Z] [INFO] Connected to SQLite database
+[2025-05-30T16:43:59.640Z] [INFO] Database tables created successfully
+[2025-05-30T16:43:59.640Z] [INFO] Database initialized successfully
+[2025-05-30T16:43:59.645Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T16:43:59.646Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T16:43:59.647Z] [INFO] Loaded command: addrole
+[2025-05-30T16:43:59.648Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T16:43:59.649Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T16:43:59.649Z] [INFO] Loaded command: removerole
+[2025-05-30T16:43:59.650Z] [INFO] Loaded command: resetlimits
+[2025-05-30T16:43:59.651Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T16:43:59.651Z] [INFO] Loaded command: viewroles
+[2025-05-30T16:43:59.652Z] [INFO] Loaded command: 247mode
+[2025-05-30T16:43:59.730Z] [INFO] Loaded command: clear
+[2025-05-30T16:43:59.731Z] [INFO] Loaded command: loop
+[2025-05-30T16:43:59.732Z] [INFO] Loaded command: nowplaying
+[2025-05-30T16:43:59.732Z] [INFO] Loaded command: pause
+[2025-05-30T16:43:59.733Z] [INFO] Loaded command: play
+[2025-05-30T16:43:59.734Z] [INFO] Loaded command: playytlive
+[2025-05-30T16:43:59.735Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T16:43:59.735Z] [INFO] Loaded command: queue
+[2025-05-30T16:43:59.736Z] [INFO] Loaded command: radio
+[2025-05-30T16:43:59.737Z] [INFO] Loaded command: resume
+[2025-05-30T16:43:59.737Z] [INFO] Loaded command: shuffle
+[2025-05-30T16:43:59.738Z] [INFO] Loaded command: skip
+[2025-05-30T16:43:59.739Z] [INFO] Loaded command: stop
+[2025-05-30T16:43:59.739Z] [INFO] Loaded command: volume
+[2025-05-30T16:43:59.740Z] [INFO] Loaded command: help
+[2025-05-30T16:43:59.741Z] [INFO] Loaded command: join
+[2025-05-30T16:43:59.741Z] [INFO] Loaded command: leave
+[2025-05-30T16:43:59.742Z] [INFO] Loaded 27 commands
+[2025-05-30T16:43:59.743Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T16:43:59.743Z] [INFO] Loaded event: ready
+[2025-05-30T16:43:59.744Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T16:43:59.744Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T16:43:59.781Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T16:43:59.782Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T16:44:00.379Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T16:44:00.799Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#0054
+[2025-05-30T16:44:00.799Z] [INFO] 📊 Serving 0 servers with 1 users
+[2025-05-30T16:44:00.863Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T16:44:00.863Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T16:45:45.524Z] [INFO] Command help used by tasniacutiepie in Midnight Zone
+[2025-05-30T16:46:18.362Z] [INFO] Command help used by tasniacutiepie in Midnight Zone
+[2025-05-30T16:59:25.801Z] [INFO] Spotify credentials not provided, using YouTube only
+[2025-05-30T16:59:26.943Z] [ERROR] YouTube search error: {}
+[2025-05-30T16:59:26.944Z] [INFO] Spotify not available, falling back to YouTube search
+[2025-05-30T16:59:26.965Z] [ERROR] YouTube search error: {}
+[2025-05-30T16:59:26.965Z] [INFO] SoundCloud not available, falling back to YouTube search
+[2025-05-30T16:59:26.983Z] [ERROR] YouTube search error: {}
+[2025-05-30T16:59:27.411Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:00:00.024Z] [INFO] Bot Statistics: {
+  "servers": 1,
+  "users": 2,
+  "voiceConnections": 0,
+  "uptime": "0 hours"
+}
+[2025-05-30T17:00:00.031Z] [INFO] Checking for expired premium users...
+[2025-05-30T17:00:00.038Z] [INFO] Checking for expired premium servers...
+[2025-05-30T17:00:42.794Z] [INFO] Spotify credentials not provided, using YouTube only
+[2025-05-30T17:00:44.295Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:00:44.295Z] [INFO] Spotify not available, falling back to YouTube search
+[2025-05-30T17:00:44.319Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:00:44.319Z] [INFO] SoundCloud not available, falling back to YouTube search
+[2025-05-30T17:00:45.296Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:00:45.519Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:01:34.475Z] [INFO] Spotify credentials not provided, using YouTube only
+[2025-05-30T17:01:34.744Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:01:34.744Z] [INFO] Spotify not available, falling back to YouTube search
+[2025-05-30T17:01:34.744Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:01:34.744Z] [INFO] SoundCloud not available, falling back to YouTube search
+[2025-05-30T17:01:34.745Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:01:35.063Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:02:47.338Z] [INFO] Connected to SQLite database
+[2025-05-30T17:02:47.345Z] [INFO] Database tables created successfully
+[2025-05-30T17:02:47.345Z] [INFO] Database initialized successfully
+[2025-05-30T17:02:47.351Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:02:47.352Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:02:47.354Z] [INFO] Loaded command: addrole
+[2025-05-30T17:02:47.355Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:02:47.356Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:02:47.356Z] [INFO] Loaded command: removerole
+[2025-05-30T17:02:47.357Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:02:47.358Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:02:47.359Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:02:47.360Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:02:47.446Z] [INFO] Loaded command: clear
+[2025-05-30T17:02:47.447Z] [INFO] Loaded command: loop
+[2025-05-30T17:02:47.447Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:02:47.448Z] [INFO] Loaded command: pause
+[2025-05-30T17:02:47.449Z] [INFO] Loaded command: play
+[2025-05-30T17:02:47.450Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:02:47.450Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:02:47.451Z] [INFO] Loaded command: queue
+[2025-05-30T17:02:47.452Z] [INFO] Loaded command: radio
+[2025-05-30T17:02:47.453Z] [INFO] Loaded command: resume
+[2025-05-30T17:02:47.453Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:02:47.454Z] [INFO] Loaded command: skip
+[2025-05-30T17:02:47.454Z] [INFO] Loaded command: stop
+[2025-05-30T17:02:47.455Z] [INFO] Loaded command: volume
+[2025-05-30T17:02:47.456Z] [INFO] Loaded command: help
+[2025-05-30T17:02:47.456Z] [INFO] Loaded command: join
+[2025-05-30T17:02:47.457Z] [INFO] Loaded command: leave
+[2025-05-30T17:02:47.457Z] [INFO] Loaded 27 commands
+[2025-05-30T17:02:47.458Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:02:47.458Z] [INFO] Loaded event: ready
+[2025-05-30T17:02:47.459Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:02:47.459Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:02:47.501Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:02:47.503Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:02:48.745Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:02:49.145Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#0054
+[2025-05-30T17:02:49.146Z] [INFO] 📊 Serving 1 servers with 2 users
+[2025-05-30T17:02:49.182Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:02:49.182Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:02:49.182Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:02:53.685Z] [INFO] Connected to SQLite database
+[2025-05-30T17:02:53.689Z] [INFO] Database tables created successfully
+[2025-05-30T17:02:53.690Z] [INFO] Database initialized successfully
+[2025-05-30T17:02:53.694Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:02:53.694Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:02:53.696Z] [INFO] Loaded command: addrole
+[2025-05-30T17:02:53.696Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:02:53.697Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:02:53.697Z] [INFO] Loaded command: removerole
+[2025-05-30T17:02:53.698Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:02:53.698Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:02:53.699Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:02:53.700Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:02:53.775Z] [INFO] Loaded command: clear
+[2025-05-30T17:02:53.775Z] [INFO] Loaded command: loop
+[2025-05-30T17:02:53.776Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:02:53.776Z] [INFO] Loaded command: pause
+[2025-05-30T17:02:53.777Z] [INFO] Loaded command: play
+[2025-05-30T17:02:53.778Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:02:53.779Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:02:53.779Z] [INFO] Loaded command: queue
+[2025-05-30T17:02:53.780Z] [INFO] Loaded command: radio
+[2025-05-30T17:02:53.781Z] [INFO] Loaded command: resume
+[2025-05-30T17:02:53.781Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:02:53.782Z] [INFO] Loaded command: skip
+[2025-05-30T17:02:53.782Z] [INFO] Loaded command: stop
+[2025-05-30T17:02:53.782Z] [INFO] Loaded command: volume
+[2025-05-30T17:02:53.783Z] [INFO] Loaded command: help
+[2025-05-30T17:02:53.784Z] [INFO] Loaded command: join
+[2025-05-30T17:02:53.784Z] [INFO] Loaded command: leave
+[2025-05-30T17:02:53.784Z] [INFO] Loaded 27 commands
+[2025-05-30T17:02:53.785Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:02:53.785Z] [INFO] Loaded event: ready
+[2025-05-30T17:02:53.786Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:02:53.786Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:02:53.820Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:02:53.821Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:02:54.125Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:02:54.556Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#0054
+[2025-05-30T17:02:54.556Z] [INFO] 📊 Serving 1 servers with 2 users
+[2025-05-30T17:02:54.585Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:02:54.586Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:02:54.586Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:03:28.033Z] [INFO] Spotify credentials not provided, using YouTube only
+[2025-05-30T17:03:29.431Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:03:29.432Z] [INFO] Spotify not available, falling back to YouTube search
+[2025-05-30T17:03:30.178Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:03:30.178Z] [INFO] SoundCloud not available, falling back to YouTube search
+[2025-05-30T17:03:30.198Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:03:30.446Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:08:09.494Z] [INFO] Connected to SQLite database
+[2025-05-30T17:08:09.503Z] [INFO] Database tables created successfully
+[2025-05-30T17:08:09.503Z] [INFO] Database initialized successfully
+[2025-05-30T17:08:09.509Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:08:09.510Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:08:09.513Z] [INFO] Loaded command: addrole
+[2025-05-30T17:08:09.514Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:08:09.515Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:08:09.515Z] [INFO] Loaded command: removerole
+[2025-05-30T17:08:09.516Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:08:09.516Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:08:09.517Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:08:09.518Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:08:09.609Z] [INFO] Loaded command: clear
+[2025-05-30T17:08:09.611Z] [INFO] Loaded command: loop
+[2025-05-30T17:08:09.611Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:08:09.612Z] [INFO] Loaded command: pause
+[2025-05-30T17:08:09.613Z] [INFO] Loaded command: play
+[2025-05-30T17:08:09.613Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:08:09.614Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:08:09.615Z] [INFO] Loaded command: queue
+[2025-05-30T17:08:09.617Z] [INFO] Loaded command: radio
+[2025-05-30T17:08:09.617Z] [INFO] Loaded command: resume
+[2025-05-30T17:08:09.618Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:08:09.618Z] [INFO] Loaded command: skip
+[2025-05-30T17:08:09.619Z] [INFO] Loaded command: stop
+[2025-05-30T17:08:09.619Z] [INFO] Loaded command: volume
+[2025-05-30T17:08:09.620Z] [INFO] Loaded command: help
+[2025-05-30T17:08:09.621Z] [INFO] Loaded command: join
+[2025-05-30T17:08:09.621Z] [INFO] Loaded command: leave
+[2025-05-30T17:08:09.622Z] [INFO] Loaded 27 commands
+[2025-05-30T17:08:09.623Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:08:09.623Z] [INFO] Loaded event: ready
+[2025-05-30T17:08:09.623Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:08:09.624Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:08:09.668Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:08:09.669Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:08:09.968Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:08:10.372Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#0054
+[2025-05-30T17:08:10.373Z] [INFO] 📊 Serving 1 servers with 2 users
+[2025-05-30T17:08:10.398Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:08:10.398Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:08:10.399Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:08:15.038Z] [INFO] Connected to SQLite database
+[2025-05-30T17:08:15.043Z] [INFO] Database tables created successfully
+[2025-05-30T17:08:15.044Z] [INFO] Database initialized successfully
+[2025-05-30T17:08:15.049Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:08:15.050Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:08:15.052Z] [INFO] Loaded command: addrole
+[2025-05-30T17:08:15.052Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:08:15.053Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:08:15.053Z] [INFO] Loaded command: removerole
+[2025-05-30T17:08:15.054Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:08:15.055Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:08:15.055Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:08:15.056Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:08:15.140Z] [INFO] Loaded command: clear
+[2025-05-30T17:08:15.141Z] [INFO] Loaded command: loop
+[2025-05-30T17:08:15.142Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:08:15.142Z] [INFO] Loaded command: pause
+[2025-05-30T17:08:15.143Z] [INFO] Loaded command: play
+[2025-05-30T17:08:15.144Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:08:15.144Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:08:15.145Z] [INFO] Loaded command: queue
+[2025-05-30T17:08:15.146Z] [INFO] Loaded command: radio
+[2025-05-30T17:08:15.146Z] [INFO] Loaded command: resume
+[2025-05-30T17:08:15.147Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:08:15.147Z] [INFO] Loaded command: skip
+[2025-05-30T17:08:15.148Z] [INFO] Loaded command: stop
+[2025-05-30T17:08:15.148Z] [INFO] Loaded command: volume
+[2025-05-30T17:08:15.149Z] [INFO] Loaded command: help
+[2025-05-30T17:08:15.150Z] [INFO] Loaded command: join
+[2025-05-30T17:08:15.150Z] [INFO] Loaded command: leave
+[2025-05-30T17:08:15.150Z] [INFO] Loaded 27 commands
+[2025-05-30T17:08:15.151Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:08:15.151Z] [INFO] Loaded event: ready
+[2025-05-30T17:08:15.152Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:08:15.152Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:08:15.185Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:08:15.186Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:08:15.581Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:08:16.053Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#0054
+[2025-05-30T17:08:16.053Z] [INFO] 📊 Serving 1 servers with 2 users
+[2025-05-30T17:08:16.132Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:08:16.132Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:08:16.133Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:19:22.279Z] [INFO] Connected to SQLite database
+[2025-05-30T17:19:22.283Z] [INFO] Database tables created successfully
+[2025-05-30T17:19:22.284Z] [INFO] Database initialized successfully
+[2025-05-30T17:19:22.287Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:19:22.288Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:19:22.290Z] [INFO] Loaded command: addrole
+[2025-05-30T17:19:22.290Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:19:22.291Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:19:22.291Z] [INFO] Loaded command: removerole
+[2025-05-30T17:19:22.292Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:19:22.293Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:19:22.294Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:19:22.295Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:19:22.370Z] [INFO] Loaded command: clear
+[2025-05-30T17:19:22.371Z] [INFO] Loaded command: loop
+[2025-05-30T17:19:22.372Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:19:22.372Z] [INFO] Loaded command: pause
+[2025-05-30T17:19:22.373Z] [INFO] Loaded command: play
+[2025-05-30T17:19:22.374Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:19:22.374Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:19:22.375Z] [INFO] Loaded command: queue
+[2025-05-30T17:19:22.376Z] [INFO] Loaded command: radio
+[2025-05-30T17:19:22.376Z] [INFO] Loaded command: resume
+[2025-05-30T17:19:22.377Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:19:22.377Z] [INFO] Loaded command: skip
+[2025-05-30T17:19:22.377Z] [INFO] Loaded command: stop
+[2025-05-30T17:19:22.378Z] [INFO] Loaded command: volume
+[2025-05-30T17:19:22.379Z] [INFO] Loaded command: help
+[2025-05-30T17:19:22.379Z] [INFO] Loaded command: join
+[2025-05-30T17:19:22.380Z] [INFO] Loaded command: leave
+[2025-05-30T17:19:22.380Z] [INFO] Loaded 27 commands
+[2025-05-30T17:19:22.381Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:19:22.381Z] [INFO] Loaded event: ready
+[2025-05-30T17:19:22.381Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:19:22.381Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:19:22.424Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:19:22.425Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:19:22.928Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:19:23.349Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:19:23.350Z] [INFO] 📊 Serving 0 servers with 1 users
+[2025-05-30T17:19:23.382Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:19:23.382Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:19:28.153Z] [INFO] Connected to SQLite database
+[2025-05-30T17:19:28.159Z] [INFO] Database tables created successfully
+[2025-05-30T17:19:28.160Z] [INFO] Database initialized successfully
+[2025-05-30T17:19:28.165Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:19:28.166Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:19:28.167Z] [INFO] Loaded command: addrole
+[2025-05-30T17:19:28.168Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:19:28.169Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:19:28.169Z] [INFO] Loaded command: removerole
+[2025-05-30T17:19:28.171Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:19:28.172Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:19:28.173Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:19:28.174Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:19:28.253Z] [INFO] Loaded command: clear
+[2025-05-30T17:19:28.254Z] [INFO] Loaded command: loop
+[2025-05-30T17:19:28.255Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:19:28.255Z] [INFO] Loaded command: pause
+[2025-05-30T17:19:28.256Z] [INFO] Loaded command: play
+[2025-05-30T17:19:28.257Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:19:28.257Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:19:28.258Z] [INFO] Loaded command: queue
+[2025-05-30T17:19:28.259Z] [INFO] Loaded command: radio
+[2025-05-30T17:19:28.259Z] [INFO] Loaded command: resume
+[2025-05-30T17:19:28.260Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:19:28.260Z] [INFO] Loaded command: skip
+[2025-05-30T17:19:28.261Z] [INFO] Loaded command: stop
+[2025-05-30T17:19:28.261Z] [INFO] Loaded command: volume
+[2025-05-30T17:19:28.262Z] [INFO] Loaded command: help
+[2025-05-30T17:19:28.263Z] [INFO] Loaded command: join
+[2025-05-30T17:19:28.263Z] [INFO] Loaded command: leave
+[2025-05-30T17:19:28.264Z] [INFO] Loaded 27 commands
+[2025-05-30T17:19:28.265Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:19:28.265Z] [INFO] Loaded event: ready
+[2025-05-30T17:19:28.265Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:19:28.265Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:19:28.300Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:19:28.302Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:19:28.755Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:19:29.321Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:19:29.321Z] [INFO] 📊 Serving 0 servers with 1 users
+[2025-05-30T17:19:29.413Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:19:29.413Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:20:47.599Z] [INFO] Spotify credentials not provided, using YouTube only
+[2025-05-30T17:20:49.260Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:20:49.260Z] [INFO] Spotify not available, falling back to YouTube search
+[2025-05-30T17:20:49.280Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:20:49.280Z] [INFO] SoundCloud not available, falling back to YouTube search
+[2025-05-30T17:20:49.293Z] [ERROR] YouTube search error: {}
+[2025-05-30T17:20:49.445Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:25:28.353Z] [INFO] Connected to SQLite database
+[2025-05-30T17:25:28.358Z] [INFO] Database tables created successfully
+[2025-05-30T17:25:28.358Z] [INFO] Database initialized successfully
+[2025-05-30T17:25:28.362Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:25:28.363Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:25:28.364Z] [INFO] Loaded command: addrole
+[2025-05-30T17:25:28.365Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:25:28.365Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:25:28.366Z] [INFO] Loaded command: removerole
+[2025-05-30T17:25:28.366Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:25:28.367Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:25:28.368Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:25:28.368Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:25:28.457Z] [INFO] Loaded command: clear
+[2025-05-30T17:25:28.458Z] [INFO] Loaded command: loop
+[2025-05-30T17:25:28.458Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:25:28.459Z] [INFO] Loaded command: pause
+[2025-05-30T17:25:28.460Z] [INFO] Loaded command: play
+[2025-05-30T17:25:28.460Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:25:28.461Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:25:28.461Z] [INFO] Loaded command: queue
+[2025-05-30T17:25:28.462Z] [INFO] Loaded command: radio
+[2025-05-30T17:25:28.463Z] [INFO] Loaded command: resume
+[2025-05-30T17:25:28.463Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:25:28.464Z] [INFO] Loaded command: skip
+[2025-05-30T17:25:28.464Z] [INFO] Loaded command: stop
+[2025-05-30T17:25:28.464Z] [INFO] Loaded command: volume
+[2025-05-30T17:25:28.465Z] [INFO] Loaded command: help
+[2025-05-30T17:25:28.466Z] [INFO] Loaded command: join
+[2025-05-30T17:25:28.466Z] [INFO] Loaded command: leave
+[2025-05-30T17:25:28.466Z] [INFO] Loaded 27 commands
+[2025-05-30T17:25:28.467Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:25:28.467Z] [INFO] Loaded event: ready
+[2025-05-30T17:25:28.468Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:25:28.468Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:25:28.518Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:25:28.520Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:25:29.024Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:25:29.433Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:25:29.434Z] [INFO] 📊 Serving 1 servers with 1 users
+[2025-05-30T17:25:29.517Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:25:29.518Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:25:29.518Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:25:33.314Z] [INFO] Connected to SQLite database
+[2025-05-30T17:25:33.320Z] [INFO] Database tables created successfully
+[2025-05-30T17:25:33.321Z] [INFO] Database initialized successfully
+[2025-05-30T17:25:33.326Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:25:33.327Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:25:33.329Z] [INFO] Loaded command: addrole
+[2025-05-30T17:25:33.330Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:25:33.330Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:25:33.331Z] [INFO] Loaded command: removerole
+[2025-05-30T17:25:33.332Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:25:33.333Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:25:33.334Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:25:33.334Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:25:33.414Z] [INFO] Loaded command: clear
+[2025-05-30T17:25:33.415Z] [INFO] Loaded command: loop
+[2025-05-30T17:25:33.416Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:25:33.416Z] [INFO] Loaded command: pause
+[2025-05-30T17:25:33.417Z] [INFO] Loaded command: play
+[2025-05-30T17:25:33.418Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:25:33.419Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:25:33.419Z] [INFO] Loaded command: queue
+[2025-05-30T17:25:33.420Z] [INFO] Loaded command: radio
+[2025-05-30T17:25:33.421Z] [INFO] Loaded command: resume
+[2025-05-30T17:25:33.421Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:25:33.422Z] [INFO] Loaded command: skip
+[2025-05-30T17:25:33.422Z] [INFO] Loaded command: stop
+[2025-05-30T17:25:33.423Z] [INFO] Loaded command: volume
+[2025-05-30T17:25:33.423Z] [INFO] Loaded command: help
+[2025-05-30T17:25:33.424Z] [INFO] Loaded command: join
+[2025-05-30T17:25:33.424Z] [INFO] Loaded command: leave
+[2025-05-30T17:25:33.425Z] [INFO] Loaded 27 commands
+[2025-05-30T17:25:33.426Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:25:33.426Z] [INFO] Loaded event: ready
+[2025-05-30T17:25:33.426Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:25:33.427Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:25:33.460Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:25:33.461Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:25:33.771Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:25:34.153Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:25:34.153Z] [INFO] 📊 Serving 1 servers with 1 users
+[2025-05-30T17:25:34.187Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:25:34.187Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:25:34.187Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:31:10.451Z] [ERROR] Failed to initialize Lavalink: {}
+[2025-05-30T17:31:10.456Z] [INFO] Connected to SQLite database
+[2025-05-30T17:31:10.460Z] [INFO] Database tables created successfully
+[2025-05-30T17:31:10.460Z] [INFO] Database initialized successfully
+[2025-05-30T17:31:10.466Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:31:10.466Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:31:10.468Z] [INFO] Loaded command: addrole
+[2025-05-30T17:31:10.469Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:31:10.469Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:31:10.470Z] [INFO] Loaded command: removerole
+[2025-05-30T17:31:10.471Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:31:10.472Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:31:10.473Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:31:10.474Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:31:10.474Z] [INFO] Loaded command: clear
+[2025-05-30T17:31:10.475Z] [INFO] Loaded command: loop
+[2025-05-30T17:31:10.482Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:31:10.482Z] [INFO] Loaded command: pause
+[2025-05-30T17:31:10.483Z] [INFO] Loaded command: play
+[2025-05-30T17:31:10.484Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:31:10.484Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:31:10.485Z] [INFO] Loaded command: queue
+[2025-05-30T17:31:10.486Z] [INFO] Loaded command: radio
+[2025-05-30T17:31:10.487Z] [INFO] Loaded command: resume
+[2025-05-30T17:31:10.487Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:31:10.490Z] [INFO] Loaded command: skip
+[2025-05-30T17:31:10.491Z] [INFO] Loaded command: stop
+[2025-05-30T17:31:10.491Z] [INFO] Loaded command: volume
+[2025-05-30T17:31:10.492Z] [INFO] Loaded command: help
+[2025-05-30T17:31:10.492Z] [INFO] Loaded command: join
+[2025-05-30T17:31:10.493Z] [INFO] Loaded command: leave
+[2025-05-30T17:31:10.493Z] [INFO] Loaded 27 commands
+[2025-05-30T17:31:10.494Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:31:10.494Z] [INFO] Loaded event: ready
+[2025-05-30T17:31:10.495Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:31:10.495Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:31:10.533Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:31:10.534Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:31:11.070Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:31:11.537Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:31:11.538Z] [INFO] 📊 Serving 1 servers with 1 users
+[2025-05-30T17:31:11.593Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:31:11.594Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:31:11.594Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:31:32.824Z] [INFO] Connected to SQLite database
+[2025-05-30T17:31:32.831Z] [INFO] Database tables created successfully
+[2025-05-30T17:31:32.831Z] [INFO] Database initialized successfully
+[2025-05-30T17:31:32.837Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:31:32.838Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:31:32.840Z] [INFO] Loaded command: addrole
+[2025-05-30T17:31:32.840Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:31:32.841Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:31:32.842Z] [INFO] Loaded command: removerole
+[2025-05-30T17:31:32.843Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:31:32.844Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:31:32.844Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:31:32.845Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:31:32.846Z] [INFO] Loaded command: clear
+[2025-05-30T17:31:32.847Z] [INFO] Loaded command: loop
+[2025-05-30T17:31:32.848Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:31:32.848Z] [INFO] Loaded command: pause
+[2025-05-30T17:31:32.849Z] [INFO] Loaded command: play
+[2025-05-30T17:31:32.850Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:31:32.851Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:31:32.852Z] [INFO] Loaded command: queue
+[2025-05-30T17:31:32.853Z] [INFO] Loaded command: radio
+[2025-05-30T17:31:32.853Z] [INFO] Loaded command: resume
+[2025-05-30T17:31:32.854Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:31:32.855Z] [INFO] Loaded command: skip
+[2025-05-30T17:31:32.855Z] [INFO] Loaded command: stop
+[2025-05-30T17:31:32.856Z] [INFO] Loaded command: volume
+[2025-05-30T17:31:32.857Z] [INFO] Loaded command: help
+[2025-05-30T17:31:32.857Z] [INFO] Loaded command: join
+[2025-05-30T17:31:32.858Z] [INFO] Loaded command: leave
+[2025-05-30T17:31:32.858Z] [INFO] Loaded 27 commands
+[2025-05-30T17:31:32.859Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:31:32.860Z] [INFO] Loaded event: ready
+[2025-05-30T17:31:32.860Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:31:32.860Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:31:32.903Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:31:32.905Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:31:33.161Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:31:33.611Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:31:33.611Z] [INFO] 📊 Serving 1 servers with 1 users
+[2025-05-30T17:31:33.612Z] [ERROR] Failed to initialize Lavalink: {}
+[2025-05-30T17:31:33.612Z] [INFO] 🎵 Music handler initialized with Lavalink
+[2025-05-30T17:31:33.648Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:31:33.649Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:31:33.649Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:31:36.788Z] [INFO] Connected to SQLite database
+[2025-05-30T17:31:36.792Z] [INFO] Database tables created successfully
+[2025-05-30T17:31:36.793Z] [INFO] Database initialized successfully
+[2025-05-30T17:31:36.797Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:31:36.798Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:31:36.800Z] [INFO] Loaded command: addrole
+[2025-05-30T17:31:36.801Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:31:36.801Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:31:36.802Z] [INFO] Loaded command: removerole
+[2025-05-30T17:31:36.803Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:31:36.803Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:31:36.804Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:31:36.805Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:31:36.806Z] [INFO] Loaded command: clear
+[2025-05-30T17:31:36.807Z] [INFO] Loaded command: loop
+[2025-05-30T17:31:36.807Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:31:36.808Z] [INFO] Loaded command: pause
+[2025-05-30T17:31:36.809Z] [INFO] Loaded command: play
+[2025-05-30T17:31:36.809Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:31:36.810Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:31:36.811Z] [INFO] Loaded command: queue
+[2025-05-30T17:31:36.812Z] [INFO] Loaded command: radio
+[2025-05-30T17:31:36.812Z] [INFO] Loaded command: resume
+[2025-05-30T17:31:36.813Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:31:36.813Z] [INFO] Loaded command: skip
+[2025-05-30T17:31:36.814Z] [INFO] Loaded command: stop
+[2025-05-30T17:31:36.814Z] [INFO] Loaded command: volume
+[2025-05-30T17:31:36.815Z] [INFO] Loaded command: help
+[2025-05-30T17:31:36.816Z] [INFO] Loaded command: join
+[2025-05-30T17:31:36.816Z] [INFO] Loaded command: leave
+[2025-05-30T17:31:36.816Z] [INFO] Loaded 27 commands
+[2025-05-30T17:31:36.817Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:31:36.818Z] [INFO] Loaded event: ready
+[2025-05-30T17:31:36.818Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:31:36.818Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:31:36.860Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:31:36.862Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:32:11.099Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:32:11.534Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:32:11.534Z] [INFO] 📊 Serving 1 servers with 1 users
+[2025-05-30T17:32:11.535Z] [ERROR] Failed to initialize Lavalink: {}
+[2025-05-30T17:32:11.535Z] [INFO] 🎵 Music handler initialized with Lavalink
+[2025-05-30T17:32:12.150Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:32:12.151Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:32:12.151Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:35:56.655Z] [INFO] Connected to SQLite database
+[2025-05-30T17:35:56.660Z] [INFO] Database tables created successfully
+[2025-05-30T17:35:56.660Z] [INFO] Database initialized successfully
+[2025-05-30T17:35:56.665Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:35:56.666Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:35:56.667Z] [INFO] Loaded command: addrole
+[2025-05-30T17:35:56.668Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:35:56.669Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:35:56.669Z] [INFO] Loaded command: removerole
+[2025-05-30T17:35:56.670Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:35:56.671Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:35:56.672Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:35:56.673Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:35:56.673Z] [INFO] Loaded command: clear
+[2025-05-30T17:35:56.674Z] [INFO] Loaded command: loop
+[2025-05-30T17:35:56.674Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:35:56.675Z] [INFO] Loaded command: pause
+[2025-05-30T17:35:56.676Z] [INFO] Loaded command: play
+[2025-05-30T17:35:56.677Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:35:56.677Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:35:56.678Z] [INFO] Loaded command: queue
+[2025-05-30T17:35:56.679Z] [INFO] Loaded command: radio
+[2025-05-30T17:35:56.679Z] [INFO] Loaded command: resume
+[2025-05-30T17:35:56.680Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:35:56.680Z] [INFO] Loaded command: skip
+[2025-05-30T17:35:56.681Z] [INFO] Loaded command: stop
+[2025-05-30T17:35:56.681Z] [INFO] Loaded command: volume
+[2025-05-30T17:35:56.682Z] [INFO] Loaded command: help
+[2025-05-30T17:35:56.683Z] [INFO] Loaded command: join
+[2025-05-30T17:35:56.683Z] [INFO] Loaded command: leave
+[2025-05-30T17:35:56.684Z] [INFO] Loaded 27 commands
+[2025-05-30T17:35:56.684Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:35:56.685Z] [INFO] Loaded event: ready
+[2025-05-30T17:35:56.685Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:35:56.685Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:35:56.776Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:35:56.778Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:35:57.188Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:35:57.666Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:35:57.667Z] [INFO] 📊 Serving 1 servers with 1 users
+[2025-05-30T17:35:57.667Z] [ERROR] Failed to initialize Lavalink: {}
+[2025-05-30T17:35:57.668Z] [INFO] 🎵 Music handler initialized with Lavalink
+[2025-05-30T17:35:57.711Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:35:57.712Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:35:57.712Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:37:09.473Z] [INFO] Searching for: https://www.youtube.com/watch?v=JUjV7TcqPdU on auto
+[2025-05-30T17:37:09.474Z] [ERROR] Lavalink search error: {}
+[2025-05-30T17:37:09.643Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:37:32.925Z] [INFO] Searching for: BESOS on auto
+[2025-05-30T17:37:32.925Z] [ERROR] Lavalink search error: {}
+[2025-05-30T17:37:33.120Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:38:49.382Z] [INFO] Connected to SQLite database
+[2025-05-30T17:38:49.388Z] [INFO] Database tables created successfully
+[2025-05-30T17:38:49.388Z] [INFO] Database initialized successfully
+[2025-05-30T17:38:49.392Z] [INFO] Loaded command: addpremiumserver
+[2025-05-30T17:38:49.393Z] [INFO] Loaded command: addpremiumuser
+[2025-05-30T17:38:49.394Z] [INFO] Loaded command: addrole
+[2025-05-30T17:38:49.395Z] [INFO] Loaded command: removepremiumserver
+[2025-05-30T17:38:49.395Z] [INFO] Loaded command: removepremiumuser
+[2025-05-30T17:38:49.396Z] [INFO] Loaded command: removerole
+[2025-05-30T17:38:49.397Z] [INFO] Loaded command: resetlimits
+[2025-05-30T17:38:49.397Z] [INFO] Loaded command: setcontactlink
+[2025-05-30T17:38:49.398Z] [INFO] Loaded command: viewroles
+[2025-05-30T17:38:49.399Z] [INFO] Loaded command: 247mode
+[2025-05-30T17:38:49.399Z] [INFO] Loaded command: clear
+[2025-05-30T17:38:49.400Z] [INFO] Loaded command: loop
+[2025-05-30T17:38:49.400Z] [INFO] Loaded command: nowplaying
+[2025-05-30T17:38:49.401Z] [INFO] Loaded command: pause
+[2025-05-30T17:38:49.402Z] [INFO] Loaded command: play
+[2025-05-30T17:38:49.402Z] [INFO] Loaded command: playytlive
+[2025-05-30T17:38:49.403Z] [INFO] Loaded command: playytpodcast
+[2025-05-30T17:38:49.403Z] [INFO] Loaded command: queue
+[2025-05-30T17:38:49.404Z] [INFO] Loaded command: radio
+[2025-05-30T17:38:49.405Z] [INFO] Loaded command: resume
+[2025-05-30T17:38:49.405Z] [INFO] Loaded command: shuffle
+[2025-05-30T17:38:49.406Z] [INFO] Loaded command: skip
+[2025-05-30T17:38:49.406Z] [INFO] Loaded command: stop
+[2025-05-30T17:38:49.407Z] [INFO] Loaded command: volume
+[2025-05-30T17:38:49.408Z] [INFO] Loaded command: help
+[2025-05-30T17:38:49.408Z] [INFO] Loaded command: join
+[2025-05-30T17:38:49.409Z] [INFO] Loaded command: leave
+[2025-05-30T17:38:49.409Z] [INFO] Loaded 27 commands
+[2025-05-30T17:38:49.410Z] [INFO] Loaded event: interactionCreate
+[2025-05-30T17:38:49.410Z] [INFO] Loaded event: ready
+[2025-05-30T17:38:49.410Z] [INFO] Loaded event: voiceStateUpdate
+[2025-05-30T17:38:49.411Z] [INFO] Setting up scheduled tasks...
+[2025-05-30T17:38:49.469Z] [INFO] ✅ Scheduled tasks configured successfully
+[2025-05-30T17:38:49.470Z] [INFO] Started refreshing application (/) commands...
+[2025-05-30T17:38:49.719Z] [INFO] Successfully reloaded application (/) commands
+[2025-05-30T17:38:50.140Z] [INFO] 🎵 LyraBot is ready! Logged in as LyraBot#1179
+[2025-05-30T17:38:50.141Z] [INFO] 📊 Serving 1 servers with 2 users
+[2025-05-30T17:38:50.141Z] [ERROR] Failed to initialize Lavalink: {}
+[2025-05-30T17:38:50.141Z] [INFO] 🎵 Music handler initialized with Lavalink
+[2025-05-30T17:38:50.200Z] [INFO] 🏠 Connected to servers:
+[2025-05-30T17:38:50.201Z] [INFO]    - Midnight Zone (1376191921432563784) - 4 members
+[2025-05-30T17:38:50.201Z] [INFO] ✅ LyraBot initialization complete
+[2025-05-30T17:39:05.318Z] [INFO] Searching for: https://www.youtube.com/watch?v=JUjV7TcqPdU on auto
+[2025-05-30T17:39:05.318Z] [ERROR] Lavalink search error: {}
+[2025-05-30T17:39:05.475Z] [INFO] Command play used by tasniacutiepie in Midnight Zone
+[2025-05-30T17:39:39.694Z] [INFO] Command help used by tasniacutiepie in Midnight Zone

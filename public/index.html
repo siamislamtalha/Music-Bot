@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LyraBot - Discord Music Bot</title>
+    <meta name="description" content="LyraBot - The most powerful Discord music bot with multi-platform support, premium features, and 24/7 reliability.">
+    <meta name="keywords" content="discord bot, music bot, youtube, spotify, soundcloud, free music bot">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="LyraBot - Discord Music Bot">
+    <meta property="og:description" content="The most powerful Discord music bot with multi-platform support and premium features.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lyrabot.example.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #D8BFD8;  /* Dusty Pink */
+            --secondary-color: #E6E6FA; /* Lavender */
+            --accent-color: #DDA0DD;     /* Plum */
+            --dark-bg: #2C2F36;
+            --darker-bg: #23252B;
+            --text-light: #FFFFFF;
+            --text-muted: #B0B3B8;
+            --success-color: #90EE90;
+            --warning-color: #FFD93D;
+            --error-color: #FF6B6B;
+            --gradient-bg: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .bot-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-bg);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(216, 191, 216, 0.4);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(216, 191, 216, 0.6);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            margin: 0.25rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .platform-badge i {
+            margin-right: 0.5rem;
+        }
+
+        .commands-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .command-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .command-name {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-note {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-note:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-note:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .floating-note:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-note:nth-child(4) { bottom: 10%; right: 20%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .bot-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .music-player-demo {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar-demo {
+            background: rgba(255, 255, 255, 0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--gradient-bg);
+            height: 100%;
+            width: 45%;
+            border-radius: 4px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .role-superadmin { background: linear-gradient(45deg, #FFD700, #FFA500); color: #000; }
+        .role-admin { background: linear-gradient(45deg, #FF6B6B, #FF8E8E); color: #FFF; }
+        .role-moderator { background: linear-gradient(45deg, #4ECDC4, #44A08D); color: #FFF; }
+        .role-premium { background: linear-gradient(45deg, #667eea, #764ba2); color: #FFF; }
+        .role-normal { background: linear-gradient(45deg, #95a5a6, #7f8c8d); color: #FFF; }
+    </style>
+</head>
+<body>
+    <!-- Floating Musical Elements -->
+    <div class="floating-elements">
+        <div class="floating-note">🎵</div>
+        <div class="floating-note">🎶</div>
+        <div class="floating-note">🎼</div>
+        <div class="floating-note">🎤</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="hero-content">
+                        <h1 class="hero-title">🎵 LyraBot</h1>
+                        <p class="hero-subtitle">The Most Powerful Discord Music Bot</p>
+                        <p class="hero-description">
+                            Experience music like never before with multi-platform support, advanced role management, 
+                            premium features, and 24/7 reliability. Perfect for any Discord server!
+                        </p>
+                        
+                        <div class="text-center mb-4">
+                            <a href="https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot%20applications.commands" 
+                               class="btn btn-primary-custom me-3 mb-2">
+                                <i class="fab fa-discord me-2"></i>Add to Discord
+                            </a>
+                            <a href="#features" class="btn btn-outline-custom mb-2">
+                                <i class="fas fa-star me-2"></i>View Features
+                            </a>
+                        </div>
+
+                        <!-- Platform Support -->
+                        <div class="text-center mb-4">
+                            <div class="platform-badge">
+                                <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                                YouTube
+                            </div>
+                            <div class="platform-badge">
+                                <i class="fab fa-spotify" style="color: #1DB954;"></i>
+                                Spotify
+                            </div>
+                            <div class="platform-badge">
+                                <i class="fab fa-soundcloud" style="color: #FF5500;"></i>
+                                SoundCloud
+                            </div>
+                            <div class="platform-badge">
+                                <i class="fas fa-radio" style="color: #FFD700;"></i>
+                                Radio
+                            </div>
+                        </div>
+
+                        <!-- Music Player Demo -->
+                        <div class="music-player-demo">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <div style="width: 60px; height: 60px; background: var(--gradient-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                        🎵
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Blinding Lights</h6>
+                                    <small class="text-muted">🟢 Spotify • 3:45</small>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <small>Now Playing</small>
+                                <div class="d-flex align-items-center mt-1">
+                                    <small class="me-2">1:24</small>
+                                    <div class="progress-bar-demo flex-grow-1">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <small class="ms-2">3:45</small>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button class="btn btn-sm btn-outline-light me-2">⏮️</button>
+                                <button class="btn btn-sm btn-outline-light me-2">⏸️</button>
+                                <button class="btn btn-sm btn-outline-light me-2">⏭️</button>
+                                <button class="btn btn-sm btn-outline-light me-2">🔄</button>
+                                <button class="btn btn-sm btn-outline-light">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container my-5">
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3 stat-item">
+                    <span class="stat-number" id="serverCount">1,000+</span>
+                    <div class="stat-label">Servers</div>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <span class="stat-number" id="userCount">500K+</span>
+                    <div class="stat-label">Users</div>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <span class="stat-number" id="songCount">10M+</span>
+                    <div class="stat-label">Songs Played</div>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <span class="stat-number">99.9%</span>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="container my-5">
+        <h2 class="section-title">✨ Amazing Features</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">🎵</div>
+                    <h5>Multi-Platform Support</h5>
+                    <p>Play music from YouTube, Spotify, SoundCloud, and internet radio stations. One bot, all your favorite platforms!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">🛡️</div>
+                    <h5>Advanced Role System</h5>
+                    <p>Sophisticated permission system with Super Admin, Admin, Moderator, Premium, and Normal user roles.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">💎</div>
+                    <h5>Premium Features</h5>
+                    <p>Unlimited commands, advanced audio filters, playlist management, and priority support for premium users.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">🔄</div>
+                    <h5>24/7 Mode</h5>
+                    <p>Keep the bot in your voice channel 24/7 with continuous radio streaming and automatic queue management.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">📊</div>
+                    <h5>Real-time Controls</h5>
+                    <p>Interactive buttons, real-time progress bars, and live updates every 10 seconds for the best user experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">🌐</div>
+                    <h5>Multi-Server Support</h5>
+                    <p>Play music in multiple servers simultaneously with independent queues and settings for each server.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role System Section -->
+    <section class="container my-5">
+        <h2 class="section-title">🎭 Role System</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="bot-card">
+                    <h5 class="mb-3">🎖️ Administrative Roles</h5>
+                    <div class="mb-3">
+                        <span class="role-badge role-superadmin">🎖️ Super Admin</span>
+                        <p class="mt-2 mb-0 small">Full bot control, role management, global settings</p>
+                    </div>
+                    <div class="mb-3">
+                        <span class="role-badge role-admin">🛡️ Admin</span>
+                        <p class="mt-2 mb-0 small">Premium management, user oversight, statistics</p>
+                    </div>
+                    <div class="mb-3">
+                        <span class="role-badge role-moderator">🛠️ Moderator</span>
+                        <p class="mt-2 mb-0 small">Premium assignment, limit resets, basic admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bot-card">
+                    <h5 class="mb-3">👥 User Roles</h5>
+                    <div class="mb-3">
+                        <span class="role-badge role-premium">💎 Premium User</span>
+                        <p class="mt-2 mb-0 small">Unlimited commands, advanced features, playlists</p>
+                    </div>
+                    <div class="mb-3">
+                        <span class="role-badge role-normal">👤 Normal User</span>
+                        <p class="mt-2 mb-0 small">Basic commands unlimited, advanced features limited (5/day)</p>
+                    </div>
+                    <div class="mt-4">
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>
+                            Premium roles have time limits and auto-expire with notifications
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section class="commands-section">
+        <div class="container">
+            <h2 class="section-title">🎮 Commands</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="mb-3">🎵 Music Commands</h5>
+                    <div class="command-item">
+                        <span class="command-name">/play [song]</span>
+                        <span class="text-muted">Play music</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/pause</span>
+                        <span class="text-muted">Pause playback</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/skip</span>
+                        <span class="text-muted">Skip song</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/queue</span>
+                        <span class="text-muted">Show queue</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/radio [genre]</span>
+                        <span class="text-muted">Start radio</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="mb-3">🛡️ Admin Commands</h5>
+                    <div class="command-item">
+                        <span class="command-name">/addpremiumuser</span>
+                        <span class="text-muted">Grant premium</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/viewroles</span>
+                        <span class="text-muted">View user roles</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/resetlimits</span>
+                        <span class="text-muted">Reset user limits</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/247mode</span>
+                        <span class="text-muted">Toggle 24/7 mode</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-name">/help</span>
+                        <span class="text-muted">Show all commands</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hosting Guide Section -->
+    <section class="container my-5">
+        <h2 class="section-title">🚀 24/7 Free Hosting Guide</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="bot-card">
+                    <h5 class="mb-3">How to Host LyraBot 24/7 for Free</h5>
+                    <div class="mb-4">
+                        <h6>1. 📦 Prepare Your Bot</h6>
+                        <ul class="list-unstyled ms-3">
+                            <li>• Clone the repository</li>
+                            <li>• Install dependencies: <code>npm install</code></li>
+                            <li>• Set up your environment variables</li>
+                            <li>• Test locally: <code>node index.js</code></li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h6>2. 🌐 Free Hosting Options</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-card">
+                                    <h6>Railway</h6>
+                                    <small>• $5/month free credit<br>• Easy deployment<br>• Auto-scaling</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-card">
+                                    <h6>Render</h6>
+                                    <small>• 750+ hours/month<br>• GitHub integration<br>• Auto-deploys</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h6>3. 🔧 Environment Variables Needed</h6>
+                        <div class="command-item">
+                            <code>DISCORD_TOKEN</code>
+                            <small>Your bot token</small>
+                        </div>
+                        <div class="command-item">
+                            <code>CLIENT_ID</code>
+                            <small>Bot client ID</small>
+                        </div>
+                        <div class="command-item">
+                            <code>SPOTIFY_CLIENT_ID</code>
+                            <small>Spotify API key</small>
+                        </div>
+                        <div class="command-item">
+                            <code>YOUTUBE_API_KEY</code>
+                            <small>YouTube API key</small>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="https://github.com/yourusername/lyrabot" class="btn btn-primary-custom">
+                            <i class="fab fa-github me-2"></i>Get Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>🎵 LyraBot</h6>
+                    <p class="text-muted">The most powerful Discord music bot with multi-platform support and premium features.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">
+                        🎧🎶 Developed BY - TASNIA TANZIM 🎶💖
+                    </p>
+                    <div class="mt-2">
+                        <a href="#" class="text-light me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-light"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Animated counters for stats
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString() + '+';
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Animate counters when stats section comes into view
+                    if (entry.target.querySelector('#serverCount')) {
+                        animateCounter(document.getElementById('serverCount'), 1000);
+                        animateCounter(document.getElementById('userCount'), 500000);
+                        animateCounter(document.getElementById('songCount'), 10000000);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Set initial styles and observe elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.feature-card, .bot-card, .stats-section');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Add floating music notes animation
+        function createFloatingNote() {
+            const notes = ['🎵', '🎶', '🎼', '♪', '♫'];
+            const note = document.createElement('div');
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.cssText = `
+                position: fixed;
+                left: ${Math.random() * 100}vw;
+                top: 100vh;
+                font-size: 2rem;
+                opacity: 0.3;
+                pointer-events: none;
+                z-index: 1;
+                animation: floatUp 4s linear forwards;
+            `;
+
+            document.body.appendChild(note);
+
+            setTimeout(() => {
+                note.remove();
+            }, 4000);
+        }
+
+        // Add CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0.3;
+                }
+                50% {
+                    opacity: 0.1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create floating notes periodically
+        setInterval(createFloatingNote, 3000);
+    </script>
+</body>
+</html>
